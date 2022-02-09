@@ -1,1 +1,5 @@
 /* Other rules */
+
+.app {
+  width: 100vh;
+}
