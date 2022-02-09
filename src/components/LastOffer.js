@@ -3,24 +3,41 @@ import "../App.css";
 const LastOffer = (props) => {
   const { data } = props;
   return (
-    <div className="home-lastOffers">
-      {data.offers.map((offer, index) => {
-        return (
-          <div key={offer._id}>
-            <div className="owner">
-              <img
-                className="avatar"
-                src={offer.owner.account.avatar.url}
-                alt=""
-              />
-              <span>{offer.owner.account.username}</span>
+    <div className="home-container">
+      <div className="home-lastOffers">
+        {data.offers.map((offer, index) => {
+          return (
+            <div key={offer._id}>
+              {/* affichage des infos owner-----------------*/}
+              <div className="owner">
+                <img
+                  className="avatar"
+                  src={offer.owner.account.avatar.url}
+                  alt=""
+                />
+                <span>{offer.owner.account.username}</span>
+              </div>
+              {/* affichage de l'image produit---------------*/}
+              <div className="product_image">
+                <img src={offer.product_image.url} alt="" />
+              </div>
+              <div>{offer.product_price}€</div>
+
+              {/* Affichage des products_details -----------*/}
+              <div className="product_details">
+                {offer.product_details.map((elem, index) => {
+                  return (
+                    <div key={index}>
+                      <div>{elem.TAILLE}</div>
+                      <div>{elem.MARQUE}</div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="product_image">
-              <img src={offer.product_image.url} alt="" />
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 };

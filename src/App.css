@@ -4,6 +4,8 @@
   box-sizing: border-box;
 }
 
+/* HEADER--------------------------------------- */
+
 .header .logo {
   width: 100px;
 }
@@ -47,14 +49,24 @@
   border: 1px solid #40aeb7;
 }
 
+/* HERO--------------------------------------- */
+
 .hero {
   height: 200px;
   background-color: #40aeb7;
 }
 
+/* HOME--------------------------------------- */
+
+.home-container {
+  max-width: 1280px;
+  margin: 0px auto;
+}
+
 .home-lastOffers {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-top: 50px;
 }
@@ -63,8 +75,11 @@
   display: flex;
   justify-content: baseline;
   gap: 15px;
+  margin-bottom: 15px;
+  margin-top: 20px;
 }
 .avatar {
+  margin-left: 10px;
   border-radius: 50%;
   width: 25px;
   height: 23px;
@@ -75,4 +90,9 @@
   height: 438px;
   object-fit: cover;
   object-position: center;
+}
+
+.product_details {
+  color: #999;
+  font-size: 12px;
 }
