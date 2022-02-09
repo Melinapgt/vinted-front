@@ -1,5 +1,78 @@
 /* Other rules */
 
-.app {
-  width: 100vh;
+* {
+  box-sizing: border-box;
+}
+
+.header .logo {
+  width: 100px;
+}
+
+.header {
+  height: 120px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 36px;
+  padding: 0px 20px;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0px auto;
+}
+
+.header input {
+  width: 632px;
+  height: 39px;
+  background-color: #f5f6f7;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.button-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.button-header button {
+  width: 115px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #40aeb7;
+}
+
+.hero {
+  height: 200px;
+  background-color: #40aeb7;
+}
+
+.home-lastOffers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.owner {
+  display: flex;
+  justify-content: baseline;
+  gap: 15px;
+}
+.avatar {
+  border-radius: 50%;
+  width: 25px;
+  height: 23px;
+}
+
+.product_image img {
+  width: 235px;
+  height: 438px;
+  object-fit: cover;
+  object-position: center;
 }
