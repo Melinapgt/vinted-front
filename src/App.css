@@ -106,3 +106,12 @@
   font-size: 12px;
   margin-top: 5px;
 }
+
+.offer-content img {
+  width: 450px;
+  height: 605px;
+  object-fit: cover;
+}
+.offer-details {
+  display: flex;
+}
