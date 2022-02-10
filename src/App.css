@@ -207,9 +207,12 @@
   align-items: center;
 }
 
-.signup-form-page form input:hover,
-.signup-form-page form button:hover {
+.signup-form-page form button:hover,
+.signup-form-page form .newsletter input:hover {
   cursor: pointer;
+}
+.signup-form-page form input:hover {
+  cursor: text;
 }
 
 .signup-form-page h2 {
@@ -230,7 +233,7 @@
   border-bottom: 1px solid #fcced3;
   font-size: 20px;
   padding: 1px 2px;
-  color: #e7e7e8;
+  color: #999;
   outline: none;
 }
 

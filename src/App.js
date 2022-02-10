@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
-import Cookies from "js-cookie";
 
 function App() {
   return (
