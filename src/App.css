@@ -80,6 +80,11 @@
 .offerCard:hover {
   cursor: pointer;
 }
+
+.offerCard {
+  text-decoration: none;
+}
+
 .owner {
   display: flex;
   justify-content: baseline;

@@ -43,6 +43,8 @@ const Signup = () => {
         }
       );
       Cookies.set("userToken", response.data.token, { expires: 10 });
+      console.log(Cookies.get("userToken"));
+
       navigate("/");
     } catch (error) {
       alert(error.response);
