@@ -1,5 +1,6 @@
 import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,7 +11,9 @@ const Header = () => {
         </div>
         <input type="text" placeholder="Rechercher des articles" />
         <div className="button-header">
-          <button className="btn-signup">S'inscrire</button>
+          <Link to={"/signup"}>
+            <button className="btn-signup">S'inscrire</button>
+          </Link>
           <button className="btn-signin">Se connecter</button>
           <button className="btn-sell">Vends tes articles</button>
         </div>

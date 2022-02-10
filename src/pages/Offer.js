@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Offer = (props) => {
+const Offer = () => {
   const { id } = useParams();
-  console.log("params id ==>", id);
+  // console.log("params id ==>", id);
 
   const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,48 +21,48 @@ const Offer = (props) => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <div>En cours de chargement</div>
   ) : (
     <div>
-      <Header />
-
-      {/* <div className="cards">
-        <img
-          className="offer-picture"
-          src={data.product_pictures[0].secure_url}
-          alt=""
-        />
-      </div> */}
-      {/* <div className="offer-content">
-        <img src={data.product_image.url} alt="" />
-        <div className="product_card">
-          <p>{data.product_price}</p>
-          <div className="offer-details">
+      {/* BODY-OFFER--------------------------------------- */}
+      <div className="offer-body">
+        <div className="offer-content">
+          <img src={data.product_pictures[0].secure_url} alt="" />
+          {/* product-card --------------------------------------- */}
+          <div className="offer-product_card">
             <div>
-              <p>MARQUE</p>
-              <p>TAILLE</p>
-              <p>ETAT</p>
-              <p>COULEUR</p>
-              <p>EMPLACEMENT</p>
+              <p className="offer-product_price">{data.product_price}€</p>
+              <div>
+                {data.product_details.map((elem, index) => {
+                  const keys = Object.keys(elem);
+                  return (
+                    <div className="offer-product_details" key={index}>
+                      <span>
+                        {keys[0]} : {elem[keys[0]]}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div>
-              {data.product_details.map((elem, index) => {
-                return (
-                  <div key={index}>
-                    <p>{elem.MARQUE}</p>
-                    <p>{elem.ETAT}</p>
-                    <p>{elem.COULEUR}</p>
-                    <p>{elem.EMPLACEMENT}</p>
-                  </div>
-                );
-              })}
+            <div className="divider"></div>
+            <div className="offer-infos">
+              <p className="offer-product_name">{data.product_name}</p>
+              <p className="offer-product_description">
+                {data.product_description}
+              </p>
             </div>
+            <div className="offer-avatar">
+              <img src={data.owner.account.avatar.secure_url} alt="" />
+              <span>{data.owner.account.username}</span>
+            </div>
+            <button>Acheter</button>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
