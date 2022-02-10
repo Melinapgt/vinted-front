@@ -42,7 +42,7 @@ const Signup = () => {
           newsletter: newsletter,
         }
       );
-      Cookies.set("userToken", response.data.token, { expires: 10 });
+      Cookies.set("userToken", response.data.token, { expires: 360 });
       console.log(Cookies.get("userToken"));
 
       navigate("/");

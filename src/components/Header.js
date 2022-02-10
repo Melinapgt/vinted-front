@@ -7,14 +7,18 @@ const Header = () => {
     <div className="header">
       <div className="container-header">
         <div>
-          <img className="logo" src={logoVinted} alt="Logo vinted" />
+          <Link to="/">
+            <img className="logo" src={logoVinted} alt="Logo vinted" />
+          </Link>
         </div>
         <input type="text" placeholder="Rechercher des articles" />
         <div className="button-header">
           <Link to={"/signup"}>
             <button className="btn-signup">S'inscrire</button>
           </Link>
-          <button className="btn-signin">Se connecter</button>
+          <Link to="/login">
+            <button className="btn-signin">Se connecter</button>
+          </Link>
           <button className="btn-sell">Vends tes articles</button>
         </div>
       </div>

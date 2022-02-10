@@ -116,6 +116,11 @@
   margin-top: 5px;
 }
 
+.link-offer {
+  text-decoration: none;
+  color: #999;
+}
+
 /* OFFER PAGE--------------------------------------- */
 
 .offer-body {
@@ -199,9 +204,10 @@
   font-size: 18px;
 }
 
-/* SIGNUP PAGE--------------------------------------- */
+/* SIGNUP PAGE & LOGIN PAGE--------------------------------------- */
 
-.signup-form-container {
+.signup-form-container,
+.login-container {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding-top: 100px;
@@ -213,25 +219,29 @@
 }
 
 .signup-form-page form button:hover,
-.signup-form-page form .newsletter input:hover {
+.signup-form-page form .newsletter input:hover,
+.login-page form button:hover {
   cursor: pointer;
 }
 .signup-form-page form input:hover {
   cursor: text;
 }
 
-.signup-form-page h2 {
+.signup-form-page h2,
+.login-page h2 {
   font-size: 30px;
   margin-bottom: 30px;
 }
-.signup-form-page form {
+.signup-form-page form,
+.login-page form {
   width: 275px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
 }
 
-.signup-form-page form input {
+.signup-form-page form input,
+.login-page form input {
   height: 38px;
   margin-bottom: 20px;
   border: none;
@@ -258,7 +268,8 @@
   font-size: 12px;
 }
 
-.signup-form-page form button {
+.signup-form-page form button,
+.login-page form button {
   background-color: #40aeb7;
   border: none;
   height: 45px;
@@ -267,11 +278,17 @@
   font-size: 18px;
 }
 
-.account-existing {
+.account-existing,
+.not-registered {
   color: #40aeb7;
   font-size: 12px;
 }
 
-.account-existing:hover {
+.account-existing:hover,
+.not-registered:hover {
   cursor: pointer;
+}
+
+.link-signup {
+  text-decoration: none;
 }

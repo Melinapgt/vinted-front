@@ -26,7 +26,6 @@ const Home = () => {
     <div>
       <Hero />
       <LastOffer data={data} />
-      {/* <Link to={`/offer/${id}`}>Go to product with Link</Link> */}
     </div>
   );
 };

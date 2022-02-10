@@ -10,7 +10,7 @@ const LastOffer = (props) => {
         {data.offers.map((offer, index) => {
           return (
             <div key={offer._id}>
-              <Link to={`/offer/${offer._id}`}>
+              <Link to={`/offer/${offer._id}`} className="link-offer">
                 <div className="offerCard">
                   {/* affichage des infos owner-----------------*/}
                   <div className="owner">
