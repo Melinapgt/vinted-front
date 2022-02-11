@@ -1,10 +1,10 @@
 import axios from "axios";
 import "../App.css";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-const Signup = () => {
+const Signup = (props) => {
+  const { setUser } = props;
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -26,8 +26,9 @@ const Signup = () => {
     setPassword(value);
   };
 
-  const handleNewsletterChange = () => {
-    setNewsletter(true);
+  const handleNewsletterChange = (event) => {
+    const value = event.target.checked;
+    setNewsletter(value);
   };
 
   const handleSubmit = async (event) => {
@@ -42,12 +43,19 @@ const Signup = () => {
           newsletter: newsletter,
         }
       );
-      Cookies.set("userToken", response.data.token, { expires: 360 });
-      console.log(Cookies.get("userToken"));
-
-      navigate("/");
+      console.log("response.data==>", response.data);
+      if (response.data.token) {
+        // dans le cas ou l'inscription ok, on sauvegarde le token
+        setUser(response.data.token);
+        // redirection vers la home page
+        navigate("/");
+      }
     } catch (error) {
-      alert(error.response);
+      console.log("error.response==>", error.response);
+
+      if (error.response.status === 409) {
+        alert("This email already has an account");
+      }
     }
   };
 

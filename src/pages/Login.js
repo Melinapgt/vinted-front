@@ -1,12 +1,13 @@
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = (props) => {
+  const { setUser } = props;
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -25,8 +26,12 @@ const Login = () => {
         "https://lereacteur-vinted-api.herokuapp.com/user/login",
         { email: email, password: password }
       );
-      Cookies.set("userToken", response.data.token, { expires: 360 });
-      console.log(Cookies.get("userToken"));
+
+      console.log("response.data==>", response.data);
+      if (response.data.token) {
+        setUser(response.data.token);
+        navigate("/");
+      }
     } catch (error) {
       alert(error.response);
     }
