@@ -1,13 +1,18 @@
 import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
 import { Link, Navigate } from "react-router-dom";
+import Switch from "react-switch";
 
 const Header = (props) => {
-  const { token, setUser, setSearch } = props;
+  const { token, setUser, setSearch, toggle, setToggle } = props;
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearch(value);
+  };
+
+  const handleSwitchChange = (checked) => {
+    setToggle(checked);
   };
 
   return (
@@ -27,9 +32,45 @@ const Header = (props) => {
             onChange={handleSearchChange}
           />
           <div>
-            <div>
+            <div className="sorting-price">
               <span>Trier par prix : </span>
-              <span></span>
+              <Switch
+                onChange={handleSwitchChange}
+                checked={toggle}
+                className="toggle-switch"
+                onColor="#40aeb7"
+                offColor="#40aeb7"
+                height={20}
+                width={42}
+                uncheckedIcon={false}
+                checkedIcon={false}
+                checkedHandleIcon={
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100%",
+                      fontSize: 15,
+                    }}
+                  >
+                    ⇣
+                  </div>
+                }
+                uncheckedHandleIcon={
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      height: "100%",
+                      fontSize: 15,
+                    }}
+                  >
+                    ⇡
+                  </div>
+                }
+              />
             </div>
           </div>
         </div>

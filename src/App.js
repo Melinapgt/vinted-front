@@ -24,21 +24,38 @@ function App() {
   };
 
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState("price-asc");
+  const [toggle, setToggle] = useState(false);
 
   return (
-    <Router>
-      <Header setUser={setUser} token={token} setSearch={setSearch} />
-      <Routes>
-        <Route
-          path="/"
-          element={<Home setSearch={setSearch} search={search} />}
+    <div className="app">
+      <Router>
+        <Header
+          setUser={setUser}
+          token={token}
+          setSearch={setSearch}
+          toggle={toggle}
+          setToggle={setToggle}
         />
-        <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<Signup setUser={setUser} />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Home
+                search={search}
+                sort={sort}
+                setSort={setSort}
+                toggle={toggle}
+              />
+            }
+          />
+          <Route path="/offer/:id" element={<Offer />} />
+          <Route path="/signup" element={<Signup setUser={setUser} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
