@@ -1,21 +1,13 @@
 import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
 import { Link, Navigate } from "react-router-dom";
-import { useState } from "react";
 
 const Header = (props) => {
-  const { token, setUser } = props;
-  const [search, setSearch] = useState("");
+  const { token, setUser, setSearch } = props;
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
     setSearch(value);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
   };
 
   return (
@@ -33,7 +25,6 @@ const Header = (props) => {
             type="text"
             placeholder="Rechercher des articles"
             onChange={handleSearchChange}
-            onKeyPress={handleKeyPress}
           />
           <div>
             <div>

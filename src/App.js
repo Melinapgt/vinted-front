@@ -22,11 +22,17 @@ function App() {
 
     setToken(token);
   };
+
+  const [search, setSearch] = useState("");
+
   return (
     <Router>
-      <Header setUser={setUser} token={token} />
+      <Header setUser={setUser} token={token} setSearch={setSearch} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home setSearch={setSearch} search={search} />}
+        />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />

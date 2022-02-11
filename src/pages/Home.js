@@ -4,21 +4,43 @@ import LastOffer from "../components/LastOffer";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = (props) => {
+  const { search, setSearch } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
-      console.log("response.data==>", response.data);
-      setData(response.data);
-      setIsLoading(false);
+      if (search) {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
+        );
+        console.log("response.data==>", response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } else {
+        const response = await axios.get(
+          `https://lereacteur-vinted-api.herokuapp.com/offers`
+        );
+        console.log("response.data==>", response.data);
+        setData(response.data);
+        setIsLoading(false);
+      }
     };
     fetchData();
-  }, []);
+  }, [search]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get(
+  //       "https://lereacteur-vinted-api.herokuapp.com/offers"
+  //     );
+  //     console.log("response.data==>", response.data);
+  //     setData(response.data);
+  //     setIsLoading(false);
+  //   };
+  //   fetchData();
+  // }, []);
 
   return isLoading ? (
     <div>En cours de chargement...</div>
