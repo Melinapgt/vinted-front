@@ -7,6 +7,7 @@ const Login = (props) => {
   const { setUser } = props;
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
 
   const handleEmailChange = (event) => {

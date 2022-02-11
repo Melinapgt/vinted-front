@@ -53,9 +53,9 @@ const Signup = (props) => {
     } catch (error) {
       console.log("error.response==>", error.response);
 
-      if (error.response.status === 409) {
-        alert("This email already has an account");
-      }
+      // if (error.response.status === 409) {
+      //   alert("This email already has an account");
+      // }
     }
   };
 

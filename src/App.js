@@ -15,8 +15,7 @@ function App() {
   const setUser = (token) => {
     if (token) {
       //si token alors gestion du cookie
-
-      Cookies.set("userToken", token, { expire: 10 });
+      Cookies.set("userToken", token, { expires: 10 });
     } else {
       Cookies.remove("userToken");
     }
