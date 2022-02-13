@@ -26,6 +26,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("price-asc");
   const [toggle, setToggle] = useState(false);
+  const [range, setRange] = useState([5]);
 
   return (
     <div className="app">
@@ -36,6 +37,8 @@ function App() {
           setSearch={setSearch}
           toggle={toggle}
           setToggle={setToggle}
+          range={range}
+          setRange={setRange}
         />
         <Routes>
           <Route

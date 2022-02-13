@@ -54,6 +54,10 @@
   margin-left: 10px;
 }
 
+.range {
+  margin-left: 70px;
+}
+
 .button-header {
   display: flex;
   align-items: center;

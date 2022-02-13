@@ -2,9 +2,11 @@ import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
 import { Link, Navigate } from "react-router-dom";
 import Switch from "react-switch";
+// import { Range } from "react-range";
 
 const Header = (props) => {
-  const { token, setUser, setSearch, toggle, setToggle } = props;
+  const { token, setUser, setSearch, toggle, setToggle, range, setRange } =
+    props;
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
@@ -14,6 +16,10 @@ const Header = (props) => {
   const handleSwitchChange = (checked) => {
     setToggle(checked);
   };
+
+  // const handleRangeChange = (range) => {
+  //   setRange(range);
+  // };
 
   return (
     <div className="header">
@@ -71,6 +77,40 @@ const Header = (props) => {
                   </div>
                 }
               />
+              <div>
+                {/* mon range */}
+                {/* <Range
+                  step={0.1}
+                  min={0}
+                  max={100}
+                  values={range}
+                  onChange={handleRangeChange}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "6px",
+                        width: "100%",
+                        backgroundColor: "#ccc",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props }) => (
+          <div
+            {...props}
+            style={{
+              ...props.style,
+              height: '42px',
+              width: '42px',
+              backgroundColor: '#999'
+            }}
+          />
+        )}
+                /> */}
+              </div>
             </div>
           </div>
         </div>
