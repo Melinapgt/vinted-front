@@ -3,10 +3,13 @@ import logoVinted from "../asset/img/Vinted_logo.png";
 import { Link, Navigate } from "react-router-dom";
 import Switch from "react-switch";
 // import { Range } from "react-range";
+import { useLocation } from "react-router-dom";
 
 const Header = (props) => {
   const { token, setUser, setSearch, toggle, setToggle, range, setRange } =
     props;
+
+  const location = useLocation();
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
@@ -31,55 +34,57 @@ const Header = (props) => {
           </Link>
         </div>
         {/* SEARCH BAR & FILTERS---------------------------------------*/}
+
         <div className="search-filters">
           <input
             type="text"
             placeholder="Rechercher des articles"
             onChange={handleSearchChange}
           />
-          <div>
-            <div className="sorting-price">
-              <span>Trier par prix : </span>
-              <Switch
-                onChange={handleSwitchChange}
-                checked={toggle}
-                className="toggle-switch"
-                onColor="#40aeb7"
-                offColor="#40aeb7"
-                height={20}
-                width={42}
-                uncheckedIcon={false}
-                checkedIcon={false}
-                checkedHandleIcon={
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100%",
-                      fontSize: 15,
-                    }}
-                  >
-                    ⇣
-                  </div>
-                }
-                uncheckedHandleIcon={
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      height: "100%",
-                      fontSize: 15,
-                    }}
-                  >
-                    ⇡
-                  </div>
-                }
-              />
-              <div>
-                {/* mon range */}
-                {/* <Range
+          {location.pathname === "/" && (
+            <div>
+              <div className="sorting-price">
+                <span>Trier par prix : </span>
+                <Switch
+                  onChange={handleSwitchChange}
+                  checked={toggle}
+                  className="toggle-switch"
+                  onColor="#40aeb7"
+                  offColor="#40aeb7"
+                  height={20}
+                  width={42}
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                  checkedHandleIcon={
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100%",
+                        fontSize: 15,
+                      }}
+                    >
+                      ⇣
+                    </div>
+                  }
+                  uncheckedHandleIcon={
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100%",
+                        fontSize: 15,
+                      }}
+                    >
+                      ⇡
+                    </div>
+                  }
+                />
+                <div>
+                  {/* mon range */}
+                  {/* <Range
                   step={0.1}
                   min={0}
                   max={100}
@@ -110,9 +115,10 @@ const Header = (props) => {
           />
         )}
                 /> */}
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* NAVIGATION BUTTONS  ---------------------------------------*/}
