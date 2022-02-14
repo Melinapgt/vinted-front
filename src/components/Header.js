@@ -1,9 +1,10 @@
 import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
 import { Link, Navigate } from "react-router-dom";
-import Switch from "react-switch";
-// import { Range } from "react-range";
+// import Switch from "react-switch";
 import { useLocation } from "react-router-dom";
+import RangePrice from "./RangePrice";
+import PriceSort from "./PriceSort";
 
 const Header = (props) => {
   const { token, setUser, setSearch, toggle, setToggle, range, setRange } =
@@ -15,15 +16,6 @@ const Header = (props) => {
     const value = event.target.value;
     setSearch(value);
   };
-
-  const handleSwitchChange = (checked) => {
-    setToggle(checked);
-  };
-
-  // const handleRangeChange = (range) => {
-  //   setRange(range);
-  // };
-
   return (
     <div className="header">
       <div className="container-header">
@@ -45,7 +37,8 @@ const Header = (props) => {
             <div>
               <div className="sorting-price">
                 <span>Trier par prix : </span>
-                <Switch
+                <PriceSort toggle={toggle} setToggle={setToggle} />
+                {/* <Switch
                   onChange={handleSwitchChange}
                   checked={toggle}
                   className="toggle-switch"
@@ -81,40 +74,11 @@ const Header = (props) => {
                       ⇡
                     </div>
                   }
-                />
-                <div>
-                  {/* mon range */}
-                  {/* <Range
-                  step={0.1}
-                  min={0}
-                  max={100}
-                  values={range}
-                  onChange={handleRangeChange}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "6px",
-                        width: "100%",
-                        backgroundColor: "#ccc",
-                      }}
-                    >
-                      {children}
-                    </div>
-                  )}
-                  renderThumb={({ props }) => (
-          <div
-            {...props}
-            style={{
-              ...props.style,
-              height: '42px',
-              width: '42px',
-              backgroundColor: '#999'
-            }}
-          />
-        )}
                 /> */}
+                <div className="range">
+                  {/* mon range */}
+                  <RangePrice range={range} setRange={setRange} />
+                  {/* fin du range */}
                 </div>
               </div>
             </div>

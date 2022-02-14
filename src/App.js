@@ -26,7 +26,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("price-asc");
   const [toggle, setToggle] = useState(false);
-  const [range, setRange] = useState([5]);
+  const [range, setRange] = useState([5, 50]);
 
   return (
     <div className="app">
