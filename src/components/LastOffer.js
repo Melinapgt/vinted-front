@@ -14,7 +14,7 @@ const LastOffer = (props) => {
                 <div className="offerCard">
                   {/* affichage des infos owner-----------------*/}
                   <div className="owner">
-                    {offer.owner.account.avatar.secure_url && (
+                    {offer.owner.account.avatar && (
                       <img
                         className="avatar"
                         src={offer.owner.account.avatar.secure_url}

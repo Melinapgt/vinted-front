@@ -16,6 +16,7 @@ const Header = (props) => {
     const value = event.target.value;
     setSearch(value);
   };
+
   return (
     <div className="header">
       <div className="container-header">
@@ -38,43 +39,7 @@ const Header = (props) => {
               <div className="sorting-price">
                 <span>Trier par prix : </span>
                 <PriceSort toggle={toggle} setToggle={setToggle} />
-                {/* <Switch
-                  onChange={handleSwitchChange}
-                  checked={toggle}
-                  className="toggle-switch"
-                  onColor="#40aeb7"
-                  offColor="#40aeb7"
-                  height={20}
-                  width={42}
-                  uncheckedIcon={false}
-                  checkedIcon={false}
-                  checkedHandleIcon={
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "100%",
-                        fontSize: 15,
-                      }}
-                    >
-                      ⇣
-                    </div>
-                  }
-                  uncheckedHandleIcon={
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        height: "100%",
-                        fontSize: 15,
-                      }}
-                    >
-                      ⇡
-                    </div>
-                  }
-                /> */}
+
                 <div className="range">
                   {/* mon range */}
                   <RangePrice range={range} setRange={setRange} />
@@ -107,7 +72,17 @@ const Header = (props) => {
             </div>
           )}
 
-          <button className="btn-sell">Vends tes articles</button>
+          {token ? (
+            <div>
+              <Link to={"/publish"}>
+                <button className="btn-sell">Vends tes articles</button>
+              </Link>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn-sell">Vends tes articles</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

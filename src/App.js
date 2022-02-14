@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Header from "./components/Header";
 import Offer from "./pages/Offer";
+import Publish from "./pages/Publish";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -49,10 +50,12 @@ function App() {
                 sort={sort}
                 setSort={setSort}
                 toggle={toggle}
+                range={range}
               />
             }
           />
           <Route path="/offer/:id" element={<Offer />} />
+          <Route path="/publish" element={<Publish />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="*" element={<NotFound />} />

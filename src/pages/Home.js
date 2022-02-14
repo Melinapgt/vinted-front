@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Home = (props) => {
-  const { search, sort, setSort, toggle } = props;
+  const { search, sort, setSort, toggle, range } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,14 +19,14 @@ const Home = (props) => {
 
       if (search) {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&title=${search}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
         );
         console.log("response.data==>", response.data);
         setData(response.data);
         setIsLoading(false);
       } else {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}`
+          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
         );
         console.log("response.data==>", response.data);
         setData(response.data);
@@ -34,7 +34,7 @@ const Home = (props) => {
       }
     };
     fetchData();
-  }, [search, sort, setSort, toggle]);
+  }, [search, sort, setSort, toggle, range]);
 
   return isLoading ? (
     <div>En cours de chargement...</div>
