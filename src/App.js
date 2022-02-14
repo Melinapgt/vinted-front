@@ -51,6 +51,7 @@ function App() {
                 setSort={setSort}
                 toggle={toggle}
                 range={range}
+                token={token}
               />
             }
           />

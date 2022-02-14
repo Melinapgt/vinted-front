@@ -5,7 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Home = (props) => {
-  const { search, sort, setSort, toggle, range } = props;
+  const { search, sort, setSort, toggle, range, token } = props;
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -40,7 +40,7 @@ const Home = (props) => {
     <div>En cours de chargement...</div>
   ) : (
     <div>
-      <Hero />
+      <Hero token={token} />
       <LastOffer data={data} />
     </div>
   );

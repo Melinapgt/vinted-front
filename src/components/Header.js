@@ -1,6 +1,6 @@
 import "../App.css";
 import logoVinted from "../asset/img/Vinted_logo.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import Switch from "react-switch";
 import { useLocation } from "react-router-dom";
 import RangePrice from "./RangePrice";
@@ -11,6 +11,7 @@ const Header = (props) => {
     props;
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
     const value = event.target.value;
@@ -56,14 +57,14 @@ const Header = (props) => {
             <button
               onClick={() => {
                 setUser(null);
-                Navigate("/");
+                navigate("/");
               }}
             >
               Se déconnecter
             </button>
           ) : (
-            <div>
-              <Link to={"/signup"}>
+            <div className="non-connected-btn">
+              <Link to="/signup">
                 <button className="btn-signup">S'inscrire</button>
               </Link>
               <Link to="/login">

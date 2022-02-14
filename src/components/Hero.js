@@ -1,13 +1,22 @@
 import "../App.css";
+import { Link } from "react-router-dom";
 
-const Hero = () => {
+const Hero = (props) => {
+  const { token } = props;
   return (
     <div className="hero">
-      hero visuel à mettre et form
-      {/* <img
-        src="https://lereacteur-vinted.netlify.app/static/media/tear.42d6cec6.svg"
-        alt=""
-      /> */}
+      <div>
+        Prêts à faire du tri dans vos plaquards?
+        {token ? (
+          <Link to="/publish">
+            <button>Commencer à vendre</button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <button>Commencer à vendre</button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

@@ -57,14 +57,22 @@ const Publish = (props) => {
         <h2>Vends ton article</h2>
         <form onSubmit={handleSubmit}>
           <div className="file-select">
-            <input
-              type="file"
-              onChange={(event) => setPicture(event.target.files[0])}
-            />
+            <div className="file-btn">
+              <label htmlFor="file" className="file-label">
+                <span className="file-add-sign">+</span>
+                <span>Ajoute une photo</span>
+              </label>
+              <input
+                type="file"
+                id="file"
+                className="input-file"
+                onChange={(event) => setPicture(event.target.files[0])}
+              />
+            </div>
           </div>
           {/* Titre et descriptiond de l'article -----------*/}
           <div className="article-input-section section1">
-            <div className="publish-title">
+            <div className="publish-title text-input">
               <h4>Titre</h4>
               <input
                 type="text"
@@ -74,7 +82,7 @@ const Publish = (props) => {
                 onChange={(event) => setTitle(event.target.value)}
               />
             </div>
-            <div className="publish-description">
+            <div className="publish-description text-input">
               <h4>Décris ton article</h4>
               <textarea
                 type="text"
@@ -89,7 +97,7 @@ const Publish = (props) => {
 
           {/* Détails de l'article -----------*/}
           <div className="article-input-section section2">
-            <div>
+            <div className="text-input">
               <h4>Marque</h4>
               <input
                 type="text"
@@ -99,7 +107,7 @@ const Publish = (props) => {
                 onChange={(event) => setBrand(event.target.value)}
               />
             </div>
-            <div>
+            <div className="text-input">
               <h4>Taille</h4>
               <input
                 type="text"
@@ -109,7 +117,7 @@ const Publish = (props) => {
                 onChange={(event) => setSize(event.target.value)}
               />
             </div>
-            <div>
+            <div className="text-input">
               <h4>Couleur</h4>
               <input
                 type="text"
@@ -119,7 +127,7 @@ const Publish = (props) => {
                 onChange={(event) => setColor(event.target.value)}
               />
             </div>
-            <div>
+            <div className="text-input">
               <h4>Etat</h4>
               <input
                 type="text"
@@ -129,7 +137,7 @@ const Publish = (props) => {
                 onChange={(event) => setCondition(event.target.value)}
               />
             </div>
-            <div>
+            <div className="text-input">
               <h4>Lieu</h4>
               <input
                 type="text"
@@ -141,30 +149,37 @@ const Publish = (props) => {
             </div>
           </div>
 
-          <div className="article-input-section">
-            <h4>Prix</h4>
-            <div>
-              <input
-                type="text"
-                id="article-price"
-                name="article-price"
-                placeholder="0,00€"
-                onChange={(event) => setPrice(event.target.value)}
-              />
-              <div>
+          <div className="article-input-section section3">
+            <div className="text-input">
+              <h4>Prix</h4>
+              <div className="price-section">
                 <input
-                  type="checkbox"
-                  id="exchange"
-                  name="exchange"
-                  onChange={(event) => setExchange(event.target.checked)}
+                  type="text"
+                  className="input-price"
+                  id="article-price"
+                  name="article-price"
+                  placeholder="0,00€"
+                  onChange={(event) => setPrice(event.target.value)}
                 />
-                <span>Je suis intéressé(e) par les échanges</span>
+                <div className="exchange-input">
+                  <label htmlFor="exchange" className="exchange-design"></label>
+                  <input
+                    type="checkbox"
+                    id="exchange"
+                    name="exchange"
+                    onChange={(event) => setExchange(event.target.checked)}
+                  />
+
+                  <span>Je suis intéressé(e) par les échanges</span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Onsubmit reQUÊTE */}
-          <button type="submit">Ajouter</button>
+          <div className="button-section">
+            <button type="submit">Ajouter</button>
+          </div>
         </form>
         {isPictureLoading ? (
           <div>Image en cours d'upload...</div>

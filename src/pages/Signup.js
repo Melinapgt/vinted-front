@@ -86,15 +86,8 @@ const Signup = (props) => {
             onChange={handlePasswordChange}
           />
           <div className="newsletter">
-            <div>
-              <span>
-                <input
-                  type="checkbox"
-                  //   name="newsletter"
-                  //   value={newsletter}
-                  onChange={handleNewsletterChange}
-                />
-              </span>
+            <div className="checkbox-newsletter-section">
+              <input type="checkbox" onChange={handleNewsletterChange} />
               <span>S'inscrire à notre newsletter</span>
             </div>
 
