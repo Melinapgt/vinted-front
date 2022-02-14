@@ -2,7 +2,8 @@ import { useState } from "react";
 import "../App.css";
 import axios from "axios";
 
-const Publish = () => {
+const Publish = (props) => {
+  const { token } = props;
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -37,13 +38,16 @@ const Publish = () => {
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
         data,
         {
-          headers: { authorization: `Bearer ${token}` },
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
       setData(response.data);
       setIsPictureLoading(false);
     } catch (error) {
-      console.log("error.message==>", error.message);
+      console.log("error.response==>", error.response);
     }
   };
 
@@ -55,7 +59,7 @@ const Publish = () => {
           <div className="file-select">
             <input
               type="file"
-              onChange={(event) => setPicture(event.target.value)}
+              onChange={(event) => setPicture(event.target.files[0])}
             />
           </div>
           {/* Titre et descriptiond de l'article -----------*/}
