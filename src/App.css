@@ -227,6 +227,48 @@
   font-size: 18px;
 }
 
+/* PUBLISH PAGE---------------------------------------- ------*/
+
+.sell-container {
+  margin: 0px auto;
+  padding-top: 50px;
+  max-width: 1280px;
+}
+
+.publish-page .file-select {
+  height: 250px;
+  margin: 20px 0px;
+  padding: 24px;
+  box-shadow: 0 0 2px grey;
+}
+
+.article-input-section {
+  box-shadow: 0 0 2px grey;
+  margin-bottom: 20px;
+}
+
+.publish-title {
+  height: 74px;
+  padding: 24px;
+  display: flex;
+}
+
+.publish-description {
+  height: 148px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.publish-page .section1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.publish-page .section2 > div {
+  display: flex;
+}
+
 /* SIGNUP PAGE & LOGIN PAGE--------------------------------------- */
 
 .signup-form-container,
