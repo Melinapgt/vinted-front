@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "../App.css";
 import axios from "axios";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Publish = (props) => {
   const { token } = props;
+  const navigate = useNavigate();
+
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,6 +19,7 @@ const Publish = (props) => {
   const [exchange, setExchange] = useState(false);
   const [isPictureLoading, setIsPictureLoading] = useState(false);
   const [data, setData] = useState();
+  const [preview, setPreview] = useState();
 
   const handleSubmit = async (event) => {
     try {
@@ -40,18 +44,24 @@ const Publish = (props) => {
         {
           headers: {
             authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "form-data",
           },
         }
       );
+
       setData(response.data);
       setIsPictureLoading(false);
+
+      // pour que l'utilisateur puisse être redirigé sur la page qui vient d'être créée
+      if (response.data._id) {
+      }
+      navigate(`/offer/${response.data._id}`);
     } catch (error) {
       console.log("error.response==>", error.response);
     }
   };
 
-  return (
+  return token ? (
     <div className="publish-page">
       <div className="sell-container">
         <h2>Vends ton article</h2>
@@ -65,9 +75,16 @@ const Publish = (props) => {
               <input
                 type="file"
                 id="file"
+                required="required"
                 className="input-file"
-                onChange={(event) => setPicture(event.target.files[0])}
+                onChange={(event) => {
+                  setPicture(event.target.files[0]);
+                  setPreview(URL.createObjectURL(event.target.files[0]));
+                }}
               />
+            </div>
+            <div className="uploadedPicture">
+              {preview && <img src={preview} alt="" />}
             </div>
           </div>
           {/* Titre et descriptiond de l'article -----------*/}
@@ -188,6 +205,8 @@ const Publish = (props) => {
         )}
       </div>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

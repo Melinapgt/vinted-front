@@ -72,8 +72,10 @@ const Header = (props) => {
               </Link>
             </div>
           )}
-
-          {token ? (
+          <Link to="/publish">
+            <button className="btn-sell">Vends tes articles</button>
+          </Link>
+          {/* {token ? (
             <div>
               <Link to={"/publish"}>
                 <button className="btn-sell">Vends tes articles</button>
@@ -83,7 +85,7 @@ const Header = (props) => {
             <Link to={"/login"}>
               <button className="btn-sell">Vends tes articles</button>
             </Link>
-          )}
+          )} */}
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import "../App.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Offer = () => {
   const { id } = useParams();
@@ -9,6 +10,7 @@ const Offer = () => {
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,7 +60,19 @@ const Offer = () => {
               <img src={data.owner.account.avatar.secure_url} alt="" />
               <span>{data.owner.account.username}</span>
             </div>
-            <button>Acheter</button>
+
+            <button
+              onClick={() => {
+                navigate("/payment", {
+                  state: {
+                    title: data.product_name,
+                    price: data.product_price,
+                  },
+                });
+              }}
+            >
+              Acheter
+            </button>
           </div>
         </div>
       </div>

@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import Footer from "./components/Footer";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -59,8 +61,10 @@ function App() {
           <Route path="/publish" element={<Publish token={token} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/payment" element={<Payment token={token} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );
