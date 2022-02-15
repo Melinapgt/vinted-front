@@ -6,7 +6,7 @@ const Footer = () => {
       <span>Site créé avec</span>
       <span> React</span>
       <span> par </span>
-      <a href="https://github.com/Melinapgt" target="_blank">
+      <a href="https://github.com/Melinapgt" target="_blank" rel="noreferrer">
         Mélina
       </a>
     </div>

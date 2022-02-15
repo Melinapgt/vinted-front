@@ -11,43 +11,51 @@ const Payment = (props) => {
   const location = useLocation();
   const { title, price } = location.state;
 
+  let subtotal = price.toFixed(2);
+  let total = Number(subtotal) + 6;
+
   return token ? (
     <Elements stripe={stripePromise}>
       <div className="payment-page">
         <div className="payment-container">
-          {/* ----------------------------------------------- */}
-          <div className="payment-recap">
+          <div className="payment-card">
+            <div className="payment-recap">
+              <div className="title-payment">Résumé de la commande</div>
+              <div className="payment-infos">
+                <p>
+                  Commande <span>{subtotal} €</span>
+                </p>
+                <p>
+                  Frais protection acheteurs <span>2.00€</span>
+                </p>
+                <p>
+                  Frais de port <span>4.00€</span>
+                </p>
+              </div>
+            </div>
             {/* ----------------------------------------------- */}
-            <div className="title-payment">Résumé de la commande</div>
-            <div>
+            <div className="divider"></div>
+            <div className="total">
               <p>
-                Commande <span>{price}</span>
-              </p>
-              <p>
-                Frais protection acheteurs <span>2.00€</span>
-              </p>
-              <p>
-                Frais de port <span>4.00€</span>
+                Total <span>{total.toFixed(2)} €</span>
               </p>
             </div>
+            <div className="payment-section">
+              <p>
+                Il ne vous reste plus qu'un étape pour vous offrir
+                <span> {title}</span>. Vous allez payer{" "}
+                <span> {total.toFixed(2)} € </span> (frais de protection et
+                frais de port inclus).
+              </p>
+              <div className="divider"></div>
+              <div>
+                <CheckoutForm token={token} title={title} price={price} />
+              </div>
+            </div>
+
+            {/* ----------------------------------------------- */}
           </div>
           {/* ----------------------------------------------- */}
-          <div className="divider"></div>
-          <div className="total">
-            <p>
-              Total <span>Calcul à faire</span>
-            </p>
-          </div>
-          <div className="payment-section">
-            <p>
-              Il ne vous reste plus qu'un étape pour vous offrir Tailleur
-              pantalon Ikito. Vous allez payer 26 € (frais de protection et
-              frais de port inclus).
-            </p>
-          </div>
-          <div>
-            <CheckoutForm token={token} title={title} price={price} />
-          </div>
         </div>
       </div>
     </Elements>
