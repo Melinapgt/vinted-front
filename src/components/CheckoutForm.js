@@ -3,7 +3,7 @@ import axios from "axios";
 import "../App.css";
 
 const CheckoutForm = (props) => {
-  const { token } = props;
+  const { token, title, price } = props;
   const elements = useElements();
   const stripe = useStripe();
 
@@ -26,8 +26,8 @@ const CheckoutForm = (props) => {
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
           token: stripeToken,
-          title: state.title,
-          amount: state.price,
+          title: title,
+          amount: price,
         }
       );
       console.log(response.data);
