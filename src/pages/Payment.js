@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 
 const Payment = (props) => {
   const { token } = props;
-  const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLIC_KEY);
 
   // utiliser useEffect pour importer les informations de l'offre
 
