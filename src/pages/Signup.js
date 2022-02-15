@@ -1,6 +1,6 @@
 import axios from "axios";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Signup = (props) => {
@@ -87,7 +87,15 @@ const Signup = (props) => {
           />
           <div className="newsletter">
             <div className="checkbox-newsletter-section">
-              <input type="checkbox" onChange={handleNewsletterChange} />
+              <label
+                htmlFor="checkbox-nexsletter"
+                className="checkbox-newsletter-design"
+              ></label>
+              <input
+                type="checkbox"
+                id="checkbox-nexsletter"
+                onChange={handleNewsletterChange}
+              />
               <span>S'inscrire à notre newsletter</span>
             </div>
 
@@ -99,9 +107,11 @@ const Signup = (props) => {
           </div>
           <button type="submit">S'inscrire</button>
         </form>
-        <span className="account-existing">
-          Tu as déjà un compte ? connecte-toi!
-        </span>
+        <Link to="/login" className="link-login">
+          <span className="account-existing">
+            Tu as déjà un compte ? connecte-toi!
+          </span>
+        </Link>
       </div>
     </div>
   );

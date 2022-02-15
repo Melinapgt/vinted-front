@@ -507,12 +507,21 @@
   gap: 10px;
 }
 
+.checkbox-newsletter-design {
+  border-radius: 3px;
+  padding: 10px;
+  margin: 0 15px 0 0;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
 .checkbox-newsletter-section input {
-  transform: scale(2);
+  display: none;
 }
 
 .newsletter > p {
   font-size: 12px;
+  margin: 12px 0;
 }
 
 .signup-form-page form button,
@@ -536,7 +545,8 @@
   cursor: pointer;
 }
 
-.link-signup {
+.link-signup,
+.link-login {
   text-decoration: none;
 }
 

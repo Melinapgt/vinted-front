@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import noAvatar from "../asset/img/no-avatar.png";
 
 const Offer = () => {
   const { id } = useParams();
@@ -31,7 +32,12 @@ const Offer = () => {
       {/* BODY-OFFER--------------------------------------- */}
       <div className="offer-body">
         <div className="offer-content">
-          <img src={data.product_pictures[0].secure_url} alt="" />
+          {data.product_pictures.length > 0 ? (
+            <img src={data.product_pictures[0].secure_url} alt="" />
+          ) : (
+            <img src={data.product_image.secure_url} alt="" />
+          )}
+
           {/* product-card --------------------------------------- */}
           <div className="offer-product_card">
             <div>
@@ -57,7 +63,12 @@ const Offer = () => {
               </p>
             </div>
             <div className="offer-avatar">
-              <img src={data.owner.account.avatar.secure_url} alt="" />
+              {data.owner.account.avatar ? (
+                <img src={data.owner.account.avatar.secure_url} alt="avatar" />
+              ) : (
+                <img src={noAvatar} alt="" />
+              )}
+
               <span>{data.owner.account.username}</span>
             </div>
 

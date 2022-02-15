@@ -1,11 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
+import { useState } from "react";
 import "../App.css";
 
 const CheckoutForm = (props) => {
   const { token, title, price } = props;
   const elements = useElements();
   const stripe = useStripe();
+  const [data, setData] = useState();
 
   const userId = token;
   const handleSubmit = async (event) => {
@@ -30,7 +32,8 @@ const CheckoutForm = (props) => {
           amount: price,
         }
       );
-      console.log(response.data);
+      console.log("Response.data, payment status ==>", response.data);
+      setData(response.data);
     } catch (error) {
       console.log("error.response ==>", error.response);
     }
@@ -40,9 +43,13 @@ const CheckoutForm = (props) => {
     <div>
       <form onSubmit={handleSubmit}>
         <CardElement className="cardElement" />
-        <button type="submit" className="pay-btn">
-          Payer
-        </button>
+        {data ? (
+          data.status && <div> Félicitation ! Paiement effectué !</div>
+        ) : (
+          <button type="submit" className="pay-btn">
+            Payer
+          </button>
+        )}
       </form>
     </div>
   );

@@ -1,5 +1,6 @@
 import "../App.css";
 import { Link } from "react-router-dom";
+import noAvatar from "../asset/img/no-avatar.png";
 
 const LastOffer = (props) => {
   const { data } = props;
@@ -14,12 +15,14 @@ const LastOffer = (props) => {
                 <div className="offerCard">
                   {/* affichage des infos owner-----------------*/}
                   <div className="owner">
-                    {offer.owner.account.avatar && (
+                    {offer.owner.account.avatar ? (
                       <img
                         className="avatar"
                         src={offer.owner.account.avatar.secure_url}
                         alt=""
                       />
+                    ) : (
+                      <img className="avatar" src={noAvatar} alt="" />
                     )}
                     <span>{offer.owner.account.username}</span>
                   </div>
