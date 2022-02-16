@@ -1,5 +1,5 @@
 import "../App.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -7,6 +7,10 @@ const Login = (props) => {
   const { setUser } = props;
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const location = useLocation();
+  const { initialPath, title, price } = location.state;
+
+  // console.log("Je reçois de location==>", location);
 
   const navigate = useNavigate();
 
@@ -31,7 +35,17 @@ const Login = (props) => {
       console.log("response.data==>", response.data);
       if (response.data.token) {
         setUser(response.data.token);
-        navigate("/");
+        if (initialPath) {
+          if (initialPath === "/payment") {
+            navigate(`${initialPath}`, {
+              state: { title: title, price: price },
+            });
+          } else if (initialPath === "/publish") {
+            navigate(`${initialPath}`);
+          }
+        } else {
+          navigate("/");
+        }
       }
     } catch (error) {
       alert(error.response);

@@ -11,8 +11,12 @@ const Payment = (props) => {
   const location = useLocation();
   const { title, price } = location.state;
 
-  let subtotal = price.toFixed(2);
+  let subtotal = Number(price).toFixed(2);
   let total = Number(subtotal) + 6;
+
+  // test en dur => le problème vient de mon price
+  // let subtotal = 10;
+  // let total = 16;
 
   return token ? (
     <Elements stripe={stripePromise}>
@@ -60,7 +64,10 @@ const Payment = (props) => {
       </div>
     </Elements>
   ) : (
-    <Navigate to="/login" />
+    <Navigate
+      to="/login"
+      state={{ initialPath: location.pathname, title: title, price: price }}
+    />
   );
 };
 

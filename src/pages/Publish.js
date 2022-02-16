@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "../App.css";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useLocation } from "react-router-dom";
 
 const Publish = (props) => {
   const { token } = props;
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
@@ -206,7 +207,7 @@ const Publish = (props) => {
       </div>
     </div>
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" state={{ initialPath: location.pathname }} />
   );
 };
 
