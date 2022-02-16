@@ -1,19 +1,20 @@
 import "../App.css";
-import { Range } from "react-range";
+import { Range, getTrackBackground } from "react-range";
 
 const RangePrice = (props) => {
   const { range, setRange } = props;
+  const MIN = 0;
+  const MAX = 500;
   return (
     <div>
       <Range
         step={5}
-        min={0}
-        max={500}
+        min={MIN}
+        max={MAX}
         values={range}
         onChange={(range) => setRange(range)}
         renderTrack={({ props, children }) => (
           <div
-            {...props}
             style={{
               ...props.style,
               height: "5px",
@@ -21,7 +22,24 @@ const RangePrice = (props) => {
               backgroundColor: "#ccc",
             }}
           >
-            {children}
+            <div
+              ref={props.ref}
+              style={{
+                height: "5px",
+                width: "100%",
+                borderRadius: "4px",
+                backgroundColor: "#ccc",
+                background: getTrackBackground({
+                  values: range,
+                  colors: ["#ccc", " #2cb1ba", "#ccc"],
+                  min: MIN,
+                  max: MAX,
+                }),
+                alignSelf: "center",
+              }}
+            >
+              {children}
+            </div>
           </div>
         )}
         renderThumb={({ index, props }) => (

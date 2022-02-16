@@ -17,8 +17,10 @@ function App() {
 
   const setUser = (token) => {
     if (token) {
+      // à la connexion
       //si token alors gestion du cookie
       Cookies.set("userToken", token, { expires: 10 });
+      //pour la deconnexion
     } else {
       Cookies.remove("userToken");
     }
