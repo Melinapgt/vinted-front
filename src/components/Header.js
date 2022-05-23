@@ -75,17 +75,6 @@ const Header = (props) => {
           <Link to="/publish">
             <button className="btn-sell">Vends tes articles</button>
           </Link>
-          {/* {token ? (
-            <div>
-              <Link to={"/publish"}>
-                <button className="btn-sell">Vends tes articles</button>
-              </Link>
-            </div>
-          ) : (
-            <Link to={"/login"}>
-              <button className="btn-sell">Vends tes articles</button>
-            </Link>
-          )} */}
         </div>
       </div>
     </div>

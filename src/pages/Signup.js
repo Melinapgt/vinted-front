@@ -34,15 +34,22 @@ const Signup = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: username,
-          email: email,
-          password: password,
-          newsletter: newsletter,
-        }
-      );
+      // const response = await axios.post(
+      //   "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+      //   {
+      //     username: username,
+      //     email: email,
+      //     password: password,
+      //     newsletter: newsletter,
+      //   }
+      // );
+
+      const response = await axios.post("http://localhost:3000/user/signup", {
+        username: username,
+        email: email,
+        password: password,
+        newsletter: newsletter,
+      });
       console.log("response.data==>", response.data);
       if (response.data.token) {
         // dans le cas ou l'inscription ok, on sauvegarde le token

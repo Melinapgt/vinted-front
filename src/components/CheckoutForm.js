@@ -32,6 +32,16 @@ const CheckoutForm = (props) => {
           amount: price,
         }
       );
+
+      // const response = await axios.post(
+      //   "http://localhost:3000/payment",
+      //   {
+      //     token: stripeToken,
+      //     title: title,
+      //     amount: price,
+      //   }
+      // );
+
       console.log("Response.data, payment status ==>", response.data);
       setData(response.data);
     } catch (error) {

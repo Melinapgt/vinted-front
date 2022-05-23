@@ -40,7 +40,7 @@ const Publish = (props) => {
       data.append("exchange", exchange);
 
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "http://localhost:3000/offer/publish",
         data,
         {
           headers: {
@@ -50,7 +50,19 @@ const Publish = (props) => {
         }
       );
 
+      // const response = await axios.post(
+      //   "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+      //   data,
+      //   {
+      //     headers: {
+      //       authorization: `Bearer ${token}`,
+      //       "Content-Type": "form-data",
+      //     },
+      //   }
+      // );
+
       setData(response.data);
+      console.log("response data Page offre==>", response.data);
       setIsPictureLoading(false);
 
       // pour que l'utilisateur puisse être redirigé sur la page qui vient d'être créée

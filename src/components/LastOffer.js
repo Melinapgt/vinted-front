@@ -49,7 +49,6 @@ const LastOffer = (props) => {
           );
         })}
       </div>
-      ;
     </div>
   );
 };

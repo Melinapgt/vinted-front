@@ -8,9 +8,11 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const location = useLocation();
-  const { initialPath, title, price } = location.state;
+  console.log("Je reçois de location==>", location);
 
-  // console.log("Je reçois de location==>", location);
+  const { initialPath, title, price } = location.state || {};
+
+  console.log("Je reçois de location==>", location);
 
   const navigate = useNavigate();
 
@@ -27,10 +29,14 @@ const Login = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        { email: email, password: password }
-      );
+      // const response = await axios.post(
+      //   "https://lereacteur-vinted-api.herokuapp.com/user/login",
+      //   { email: email, password: password }
+      // );
+      const response = await axios.post("http://localhost:3000/user/login", {
+        email: email,
+        password: password,
+      });
 
       console.log("response.data==>", response.data);
       if (response.data.token) {

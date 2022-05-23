@@ -21,15 +21,22 @@ const Home = (props) => {
       }
 
       if (search) {
+        // const response = await axios.get(
+        //   `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
+        // );
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
+          `http://localhost:3000/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
         );
+
         console.log("response.data==>", response.data);
         setData(response.data);
         setIsLoading(false);
       } else {
+        // const response = await axios.get(
+        //   `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+        // );
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+          `http://localhost:3000/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
         );
         console.log("response.data==>", response.data);
         setData(response.data);
@@ -44,8 +51,18 @@ const Home = (props) => {
   ) : (
     <div>
       <Hero token={token} />
-      <span className="articles-count">Articles</span>
-      <span className="count">{data.count} résultats</span>
+      <div className="pages">
+        {page > 1 && (
+          <button onClick={() => setPage(page - 1)}>Page précédent</button>
+        )}
+        <button onClick={() => setPage(page + 1)}>Page suivante</button>
+      </div>
+      <div className="container">
+        {" "}
+        <span className="articles-count">Articles</span>
+        <span className="count">{data.count} résultats</span>
+      </div>
+
       <LastOffer data={data} />
       <div className="pages">
         {page > 1 && (
