@@ -53,9 +53,14 @@
   flex-direction: column;
 }
 
+.header .filters-bloc {
+  display: flex;
+}
+
 .sorting-price {
   margin-top: 40px;
   display: flex;
+  align-items: center;
 }
 
 .sorting-price .toggle-switch {
@@ -189,6 +194,12 @@
   height: 23px;
 }
 
+.signup-form-page .avatar {
+  width: 30px;
+  height: 28px;
+  margin-right: 10px;
+}
+
 .product_image img {
   width: 235px;
   height: 438px;
@@ -265,6 +276,11 @@
 .offer-product_details {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.offer-blocLeft {
+  color: #666;
 }
 
 .divider {
@@ -556,6 +572,13 @@
 .link-signup,
 .link-login {
   text-decoration: none;
+}
+
+.signup-form-page .file-label {
+  margin-bottom: 30px;
+  color: #e3e4e4;
+  font-weight: 400;
+  font-size: 20px;
 }
 
 /* PAYMENT PAGE--------------------------------------- */

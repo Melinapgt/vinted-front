@@ -30,13 +30,13 @@ const Header = (props) => {
         {/* SEARCH BAR & FILTERS---------------------------------------*/}
 
         <div className="search-filters">
-          <input
-            type="text"
-            placeholder="Rechercher des articles"
-            onChange={handleSearchChange}
-          />
           {location.pathname === "/" && (
             <div>
+              <input
+                type="text"
+                placeholder="Rechercher des articles"
+                onChange={handleSearchChange}
+              />
               <div className="sorting-price">
                 <span>Trier par prix : </span>
                 <PriceSort toggle={toggle} setToggle={setToggle} />

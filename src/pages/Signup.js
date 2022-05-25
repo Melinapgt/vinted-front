@@ -2,6 +2,7 @@ import axios from "axios";
 import "../App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import noAvatar from "../asset/img/no-avatar.png";
 
 const Signup = (props) => {
   const { setUser } = props;
@@ -10,6 +11,8 @@ const Signup = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [newsletter, setNewsletter] = useState(false);
+  const [picture, setPicture] = useState();
+  const [preview, setPreview] = useState();
 
   const handleEmailChange = (event) => {
     const value = event.target.value;
@@ -34,6 +37,14 @@ const Signup = (props) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
+
+      const dataSignup = new FormData();
+      dataSignup.append("picture", picture);
+      dataSignup.append("username", username);
+      dataSignup.append("email", email);
+      dataSignup.append("password", password);
+      dataSignup.append("newsletter", newsletter);
+
       // const response = await axios.post(
       //   "https://lereacteur-vinted-api.herokuapp.com/user/signup",
       //   {
@@ -44,12 +55,10 @@ const Signup = (props) => {
       //   }
       // );
 
-      const response = await axios.post("http://localhost:3000/user/signup", {
-        username: username,
-        email: email,
-        password: password,
-        newsletter: newsletter,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/user/signup",
+        dataSignup
+      );
       console.log("response.data==>", response.data);
       if (response.data.token) {
         // dans le cas ou l'inscription ok, on sauvegarde le token
@@ -71,6 +80,28 @@ const Signup = (props) => {
       <div className="signup-form-container">
         <h2 className="signup-form_title">S'inscrire</h2>
         <form onSubmit={handleSubmit}>
+          {/* image avatar */}
+          {/* <div className="file-select"> */}
+          {/* <div className="file-btn"> */}
+          <label htmlFor="file" className="file-label">
+            {/* <span className="file-add-sign">+</span> */}
+            <img className="avatar" src={noAvatar} alt="" />
+            <span>Ajouter une photo</span>
+          </label>
+          <input
+            type="file"
+            id="file"
+            className="input-file"
+            onChange={(event) => {
+              setPicture(event.target.files[0]);
+              setPreview(URL.createObjectURL(event.target.files[0]));
+            }}
+          />
+          {/* </div> */}
+          <div className="uploadedPicture">
+            {preview && <img src={preview} alt="" />}
+          </div>
+          {/* </div> */}
           <input
             type="text"
             placeholder="Nom d'utilisateur"

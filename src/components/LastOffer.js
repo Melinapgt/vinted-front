@@ -18,7 +18,7 @@ const LastOffer = (props) => {
                     {offer.owner.account.avatar ? (
                       <img
                         className="avatar"
-                        src={offer.owner.account.avatar.secure_url}
+                        src={offer.owner.account.avatar}
                         alt=""
                       />
                     ) : (
@@ -37,8 +37,8 @@ const LastOffer = (props) => {
                     {offer.product_details.map((elem, index) => {
                       return (
                         <div key={index}>
-                          <div>{elem.TAILLE}</div>
-                          <div>{elem.MARQUE}</div>
+                          <div>{elem.SIZE}</div>
+                          <div>{elem.BRAND}</div>
                         </div>
                       );
                     })}
