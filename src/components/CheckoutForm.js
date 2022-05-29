@@ -1,12 +1,19 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 
 const CheckoutForm = (props) => {
-  const { token, title, price } = props;
+  //props
+  const { token, title, amount } = props;
+
+  //settings
   const elements = useElements();
   const stripe = useStripe();
+  const navigate = useNavigate();
+
+  //hooks
   const [data, setData] = useState();
 
   const userId = token;
@@ -35,8 +42,8 @@ const CheckoutForm = (props) => {
 
       const response = await axios.post("http://localhost:3000/payment", {
         token: stripeToken,
-        title: title,
-        amount: price,
+        title,
+        amount,
       });
 
       console.log("Response.data, payment status ==>", response.data);
@@ -51,7 +58,20 @@ const CheckoutForm = (props) => {
       <form onSubmit={handleSubmit}>
         <CardElement className="cardElement" />
         {data ? (
-          data.status && <div> Félicitation ! Paiement effectué !</div>
+          data.status && (
+            <div>
+              {" "}
+              <div> Félicitation ! Paiement effectué 🎉 !</div>
+              <button
+                className="return-btn"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Retour
+              </button>
+            </div>
+          )
         ) : (
           <button type="submit" className="pay-btn">
             Payer

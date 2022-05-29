@@ -6,7 +6,9 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const Payment = (props) => {
   const { token } = props;
-  const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+  const stripePromise = loadStripe(
+    "pk_test_51KTR1zEtls8MP1LlERgTW0CJ9wbgMKswat63tpxgpqXfexMOnkCrpBbIPuJqPJM06XMHsUFvIrrsO7TSfH4dcjx200luWHPDrt"
+  );
 
   const location = useLocation();
   const { title, price } = location.state;
@@ -53,7 +55,7 @@ const Payment = (props) => {
               </p>
               <div className="divider"></div>
               <div>
-                <CheckoutForm token={token} title={title} price={price} />
+                <CheckoutForm token={token} title={title} amount={total} />
               </div>
             </div>
 
