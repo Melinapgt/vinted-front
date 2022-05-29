@@ -24,23 +24,20 @@ const CheckoutForm = (props) => {
       });
       console.log("Stripe Response ===> ", stripeResponse);
       const stripeToken = stripeResponse.token.id;
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/payment",
-        {
-          token: stripeToken,
-          title: title,
-          amount: price,
-        }
-      );
-
       // const response = await axios.post(
-      //   "http://localhost:3000/payment",
+      //   "https://lereacteur-vinted-api.herokuapp.com/payment",
       //   {
       //     token: stripeToken,
       //     title: title,
       //     amount: price,
       //   }
       // );
+
+      const response = await axios.post("http://localhost:3000/payment", {
+        token: stripeToken,
+        title: title,
+        amount: price,
+      });
 
       console.log("Response.data, payment status ==>", response.data);
       setData(response.data);
