@@ -22,10 +22,10 @@ const Home = (props) => {
 
       if (search) {
         // const response = await axios.get(
-        //   `https://lereacteur-vinted-api.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
+        //   `http://localhost:3000/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
         // );
         const response = await axios.get(
-          `http://localhost:3000/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
+          `https://vinted-backend-project.herokuapp.com/offers?sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}&title=${search}`
         );
 
         console.log("response.data==>", response.data);
@@ -33,12 +33,14 @@ const Home = (props) => {
         setIsLoading(false);
       } else {
         // const response = await axios.get(
-        //   `https://lereacteur-vinted-api.herokuapp.com/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+        //   `http://localhost:3000/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
         // );
+        // console.log("response.data==>", response.data);
         const response = await axios.get(
-          `http://localhost:3000/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
+          `https://vinted-backend-project.herokuapp.com/offers?limit=${limit}&page=${page}&sort=${sort}&priceMin=${range[0]}&priceMax=${range[1]}`
         );
         console.log("response.data==>", response.data);
+
         setData(response.data);
         setIsLoading(false);
       }

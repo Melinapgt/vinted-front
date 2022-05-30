@@ -15,10 +15,10 @@ const Offer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      // const response = await axios.get(
-      //   `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-      // );
-      const response = await axios.get(`http://localhost:3000/offer?id=${id}`);
+      // const response = await axios.get(`http://localhost:3000/offer?id=${id}`);
+      const response = await axios.get(
+        `https://vinted-backend-project.herokuapp.com/offer?id=${id}`
+      );
 
       console.log("response.data Offer==>", response.data);
       setData(response.data);

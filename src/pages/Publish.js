@@ -39,19 +39,8 @@ const Publish = (props) => {
       data.append("price", price);
       data.append("exchange", exchange);
 
-      const response = await axios.post(
-        "http://localhost:3000/offer/publish",
-        data,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-            "Content-Type": "form-data",
-          },
-        }
-      );
-
       // const response = await axios.post(
-      //   "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+      //   "http://localhost:3000/offer/publish",
       //   data,
       //   {
       //     headers: {
@@ -60,6 +49,16 @@ const Publish = (props) => {
       //     },
       //   }
       // );
+      const response = await axios.post(
+        "https://vinted-backend-project.herokuapp.com/offer/publish",
+        data,
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "form-data",
+          },
+        }
+      );
 
       setData(response.data);
       console.log("response data Page offre==>", response.data);

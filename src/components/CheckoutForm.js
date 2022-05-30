@@ -31,20 +31,21 @@ const CheckoutForm = (props) => {
       });
       console.log("Stripe Response ===> ", stripeResponse);
       const stripeToken = stripeResponse.token.id;
-      // const response = await axios.post(
-      //   "https://lereacteur-vinted-api.herokuapp.com/payment",
-      //   {
-      //     token: stripeToken,
-      //     title: title,
-      //     amount: price,
-      //   }
-      // );
 
-      const response = await axios.post("http://localhost:3000/payment", {
-        token: stripeToken,
-        title,
-        amount,
-      });
+      // const response = await axios.post("http://localhost:3000/payment", {
+      //   token: stripeToken,
+      //   title,
+      //   amount,
+      // });
+
+      const response = await axios.post(
+        "https://vinted-backend-project.herokuapp.com/payment",
+        {
+          token: stripeToken,
+          title,
+          amount,
+        }
+      );
 
       console.log("Response.data, payment status ==>", response.data);
       setData(response.data);

@@ -46,19 +46,15 @@ const Signup = (props) => {
       dataSignup.append("newsletter", newsletter);
 
       // const response = await axios.post(
-      //   "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-      //   {
-      //     username: username,
-      //     email: email,
-      //     password: password,
-      //     newsletter: newsletter,
-      //   }
+      //   "http://localhost:3000/user/signup",
+      //   dataSignup
       // );
 
       const response = await axios.post(
-        "http://localhost:3000/user/signup",
+        "https://vinted-backend-project.herokuapp.com/user/signup",
         dataSignup
       );
+
       console.log("response.data==>", response.data);
       if (response.data.token) {
         // dans le cas ou l'inscription ok, on sauvegarde le token
