@@ -196,6 +196,7 @@ button:hover {
   border-radius: 50%;
   width: 25px;
   height: 23px;
+  object-fit: cover;
 }
 
 .signup-form-page .avatar {
