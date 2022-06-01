@@ -113,13 +113,19 @@ button:hover {
 
 .hero {
   /* background-image: url(https://lereacteur-vinted.netlify.app/static/media/hero.09bfd0f9.jpg); */
-  background-image: url(/Users/melina/Le_Reacteur/VINTED/vinted-front/src/asset/img/banner.JPG);
+  /* background-image: url(/Users/melina/Le_Reacteur/VINTED/vinted-front/src/asset/img/banner.JPG); */
   height: 500px;
   width: 100%;
   position: relative;
   background-position: 50%;
   background-size: cover;
   margin-bottom: 30px;
+}
+
+.hero img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-bloc {
@@ -133,7 +139,9 @@ button:hover {
   flex-direction: column;
   justify-content: center;
   position: absolute;
-  margin-top: 75px;
+  top: 100px;
+  left: 200px;
+
   box-shadow: 0 0 2px rgb(17 17 17 / 24%);
 }
 
